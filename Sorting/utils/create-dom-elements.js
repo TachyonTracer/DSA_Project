@@ -1,23 +1,16 @@
 /**
- * Create needed DOM elements for the animation.
- *
- * @param {Array<number>} dataList List to be sorted
- * @param {import('../drivers/bubble-sort').DriverSettings} settings Constants used to initialize DOM elements
- * @returns {SVGAElement} Container element
- * 
+ * @param {Array<number>} 
+ * @param {import('../drivers/bubble-sort').DriverSettings} 
+ * @returns {SVGAElement} 
  */
 function createDOMElements(dataList, settings) {
     const { barWidth, barSpacing, textOffset, maxBarHeight } = settings;
     const svgContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   
-    // Create and init svg container
+   
     svgContainer.style.width = dataList.length * (barWidth + barSpacing);
     svgContainer.style.height = maxBarHeight + textOffset;
-  
-    /**
-     * Create svg group for each element in the array.
-     * Svg group consists of the vertical bar (rect) and text. 
-     */
+
     for (let i = 0; i < dataList.length; i++) {
       const barHeight = dataList[i];
       const coordinateX = i * (barWidth + barSpacing);

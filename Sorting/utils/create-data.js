@@ -1,8 +1,8 @@
 /**
- * Create unsorted dummy data.
  *
- * @param {number} length Amount of data in the list
- * @param {number} maxNumber Maximum number that can be generated
+ *
+ * @param {number} 
+ * @param {number} 
  * @returns {Array<number>}
  */
 function createData(length = 15, maxNumber = 200) {

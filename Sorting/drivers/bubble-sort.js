@@ -1,24 +1,24 @@
 import { createData, createDOMElements } from '../utils';
 
 /**
- * @typedef {object} DriverSettings - static and user defined settings used by the driver
- * @prop {number} maxBarHeight - maximum height of the single bar in the animation
- * @prop {number} barWidth - width of the single bar
- * @prop {number} barSpacing - space between the bars
- * @prop {number} textOffset - vertical distance between the bar label and the bar
- * @prop {number} animationSpeed - animation speed in ms
- * @prop {number} listLength - amount of items in the list to sort
+ * @typedef {object} DriverSettings 
+ * @prop {number} 
+ * @prop {number} 
+ * @prop {number} 
+ * @prop {number} 
+ * @prop {number} 
+ * @prop {number} 
  */
 
 /**
- * @typedef {object} DriverState - internal state managed by the driver
- * @prop {HTMLDivElement} playerElement - HTML element where animation player is located
- * @prop {any} timerId - ID of currently active timeout. Timeout API is used to managed the animation
- * @prop {Array<number>} list - List that is currently being sorted
- * @prop {boolean} pause - flag to indicated if animation is paused
- * @prop {number} loopIndex - index of the running loop
- * @prop {number} remainingRepetitions - total amount of the remaining repetitions
- * @prop {Array<function>} onSortCompletedSubscribers - list of callbacks to invoke when sorting is completed
+ * @typedef {object} DriverState -
+ * @prop {HTMLDivElement}
+ * @prop {any} 
+ * @prop {Array<number>} 
+ * @prop {boolean} 
+ * @prop {number} 
+ * @prop {number} 
+ * @prop {Array<function>}
  */
 
 function driver() {
@@ -39,12 +39,12 @@ function driver() {
     onSortCompletedSubscribers: [],
   };
 
-  // Populate player element with initial data
+  
   playerState.playerElement.style.height = `${settings.maxBarHeight + 150}px`;
   playerState.playerElement.innerHTML = '<p>Press "Play" button to start</p>';
 
   /**
-   * @returns {SVGAElement} Container element
+   * @returns {SVGAElement} 
    */
   function getPlayerSvgContainer() {
     let svgContainer = playerState.playerElement.querySelector('svg');
@@ -57,14 +57,14 @@ function driver() {
   }
   
   /**
-   * @param {SVGElement} svgContainer
+   * @param {SVGElement} 
    */
   function adjustHorizontalScroll(svgContainer) {
-    // Check content width
+    
     const playerWrapperWidth = playerState.playerElement.clientWidth;
     const svgContainerWidth = svgContainer.clientWidth;
 
-    // Allow horizontal scroll if player wrapper can not show all elements
+   
     if (playerWrapperWidth > svgContainerWidth) {
       playerState.playerElement.classList.remove('scroll-x')
     } else {
@@ -73,7 +73,7 @@ function driver() {
   }
 
   /**
-   * @param {SVGElement} svgContainer
+   * @param {SVGElement} 
    */
   function getBubbleSortElements(svgElements) {
     const { loopIndex } = playerState;
@@ -88,9 +88,9 @@ function driver() {
   }
 
   /**
-   * @param {SVGGElement} leftElement 
-   * @param {SVGGElement} rightElement 
-   * @returns {boolean} Did swap elements
+   * @param {SVGGElement}  
+   * @param {SVGGElement} 
+   * @returns {boolean} 
    */
   function performSwapIfNeeded(leftElement, rightElement) {
     const { list, loopIndex } = playerState;
