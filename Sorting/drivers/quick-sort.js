@@ -67,52 +67,73 @@ function driver() {
       playerState.playerElement.classList.add('scroll-x');
     }
   }
+/**
+ * @param {Array<SVGElement>} svgElements
+ * @param {number} start
+ * @param {number} end
+ * @returns {number}
+ */
+function partition(svgElements, start, end) {
+  const { list } = playerState;
+  const pivotValue = list[end];
+  let pivotIndex = start;
+  for (let i = start; i < end; i++) {
+    if (list[i] < pivotValue) {
+      [list[i], list[pivotIndex]] = [list[pivotIndex], list[i]];
+      swapElements(svgElements[i], svgElements[pivotIndex]);
+      pivotIndex++;
+    }
+  }
+  [list[pivotIndex], list[end]] = [list[end], list[pivotIndex]];
+  swapElements(svgElements[pivotIndex], svgElements[end]);
+  return pivotIndex;
+}
 
-  function quickSort(list, low, high) {
-    if (low < high) {
-      const pi = partition(list, low, high);
-      quickSort(list, low, pi - 1);
-      quickSort(list, pi + 1, high);
-  
-      // Update DOM elements here
-      const svgElements = Array.from(getPlayerSvgContainer().children);
-      for (let i = low; i <= pi; i++) {
-        svgElements[i].classList.add('sorted'); // Mark elements as sorted on the left side of pivot
-      }
-      for (let i = pi + 1; i <= high; i++) {
-        svgElements[i].classList.remove('current'); // Remove current highlighting after partition
-      }
-    }
+/**
+ * Swaps two SVG elements by updating their attributes.
+ * @param {SVGElement} a
+ * @param {SVGElement} b
+ */
+function swapElements(a, b) {
+  const aIndex = Number(a.getAttribute('data-index'));
+  const bIndex = Number(b.getAttribute('data-index'));
+  const temp = a.getAttribute('transform');
+  a.setAttribute('transform', b.getAttribute('transform'));
+  b.setAttribute('transform', temp);
+  a.setAttribute('data-index', bIndex);
+  b.setAttribute('data-index', aIndex);
+}
+
+/**
+ * The main function that implements QuickSort.
+ * @param {Array<SVGElement>} svgElements
+ * @param {number} start
+ * @param {number} end
+ */
+function quickSort(svgElements, start, end) {
+  if (start >= end) {
+    return;
   }
-  
-  function performSwap(leftIndex, rightIndex) {
-    const svgElements = Array.from(getPlayerSvgContainer().children);
-    const leftElement = svgElements[leftIndex];
-    const rightElement = svgElements[rightIndex];
-  
-    // Swap element positions visually
-    const leftTransform = leftElement.getAttribute('transform');
-    leftElement.setAttribute('transform', rightElement.getAttribute('transform'));
-    rightElement.setAttribute('transform', leftTransform);
-  
-    // Swap data-index attributes for proper visual representation
-    const leftIndexValue = leftElement.getAttribute('data-index');
-    leftElement.setAttribute('data-index', rightIndex);
-    rightElement.setAttribute('data-index', leftIndexValue);
+  const index = partition(svgElements, start, end);
+  quickSort(svgElements, start, index - 1);
+  quickSort(svgElements, index + 1, end);
+}
+
+// Visualization functions
+function startQuickSort() {
+  const svgContainer = getPlayerSvgContainer();
+  /** @type {Array<SVGElement>} */
+  const elementsToSort = Array.from(svgContainer.children);
+  quickSort(elementsToSort, 0, elementsToSort.length - 1);
+}
+
+// Add this to your player object
+return {
+  // ... other methods
+  quickSortPlay() {
+    startQuickSort();
   }
-  
-  function partition(list, low, high) {
-    let pivot = list[high];
-    let i = low - 1;
-  
-    for (let j = low; j < high; j++) {
-      if (list[j] <= pivot) {
-        i++;
-        performSwap(i, j); // Swap elements visually during partition
-      }
-    }
-    performSwap(i + 1, high); // Move pivot to its final sorted position
-    return i + 1;
-  }
+};
+
 }
 export default driver;

@@ -11,9 +11,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --text-body-color: rgb(59, 15, 171);
+  --text-body-color: rgb(59, 15, 171) ;
   --outline-color: rgb(15, 255, 251);
-  --page-background-color: rgb(10, 170, 239);
+  --page-background-color:white;
   --element-background-color: rgb(161, 247, 75);
   --sm-gap: 0.5rem;
   --md-gap: 1.5rem;
@@ -161,4 +161,34 @@ button:disabled:hover {
 #player-wrapper .swapped rect {
   fill: #5B4B8A;
   stroke: #5B4B8A;
+}
+
+h1{
+font-size: 40px;
+font-family: 'Jokerman';
+color: #4008da;
+
+text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+.nav-bar a{
+ 
+    list-style-type: none;
+    margin-top: 15px;
+    text-decoration: none;
+    border-radius: 40px;
+   
+   
+    
+  }
+  li{
+    display: inline;
+    font-size: 30px;
+    padding: 30px;
+   
+  
+}
+.nav-bar a:hover {
+  background-color:burlywood;
+  text-decoration: none;
 }

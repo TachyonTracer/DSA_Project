@@ -8,7 +8,7 @@ const stopButtonElement = document.getElementById('stop-button');
 const listLengthInputElement = document.getElementById('list-length');
 const animationSpeedInputElement = document.getElementById('animation-speed');
 
-const driver = createQuickSortDriver();
+const driver = createBubbleSortDriver();
 
 driver.onSortCompleted(() => {
   pauseButtonElement.disabled = true;
