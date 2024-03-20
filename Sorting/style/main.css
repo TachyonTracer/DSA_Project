@@ -14,7 +14,7 @@
   --text-body-color: rgb(59, 15, 171) ;
   --outline-color: rgb(15, 255, 251);
   --page-background-color:white;
-  --element-background-color: rgb(161, 247, 75);
+  --element-background-color: rgb(73, 252, 23);
   --sm-gap: 0.5rem;
   --md-gap: 1.5rem;
 }
@@ -189,6 +189,8 @@ text-decoration-line: underline;
   
 }
 .nav-bar a:hover {
-  background-color:burlywood;
+  background-color:rgb(15, 234, 242);
   text-decoration: none;
+ 
 }
+

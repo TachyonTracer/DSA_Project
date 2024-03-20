@@ -1,12 +1,16 @@
 import './style/main.css'
 import { createBubbleSortDriver,createQuickSortDriver  } from './drivers';
 
-
+    
 const playButtonElement = document.getElementById('play-button');
 const pauseButtonElement = document.getElementById('pause-button');
 const stopButtonElement = document.getElementById('stop-button');
 const listLengthInputElement = document.getElementById('list-length');
 const animationSpeedInputElement = document.getElementById('animation-speed');
+const di = document.getElementById('elements');
+
+
+
 
 const driver = createBubbleSortDriver();
 
