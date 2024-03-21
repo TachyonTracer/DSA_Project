@@ -7,8 +7,8 @@ const pauseButtonElement = document.getElementById('pause-button');
 const stopButtonElement = document.getElementById('stop-button');
 const listLengthInputElement = document.getElementById('list-length');
 const animationSpeedInputElement = document.getElementById('animation-speed');
-const di = document.getElementById('elements');
-
+const ele=document.getElementById('elements').value
+const dataList = ele.split(',').map(Number);
 
 
 

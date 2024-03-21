@@ -166,20 +166,27 @@ function driver() {
 
   return {
     play(options = {}) {
-      
       if (playerState.pause) {
         playerState.pause = false;
       } else {
         settings = { ...settings, ...options };
+    
+        const userInputString = document.getElementById('elements').value;
+        const dataList = userInputString.split(',').map(Number);
+    
+        // Decide on data source based on user input presence
+        const useUserInput = dataList.length > 0;
+        const listLength = useUserInput ? dataList.length : options.listLength;
+    
         playerState = {
           ...playerState,
-          list: createData(settings.listLength, settings.maxBarHeight),
+          list: useUserInput ? dataList : createData(listLength, settings.maxBarHeight),
           pause: false,
           loopIndex: 0,
-          remainingRepetitions: settings.listLength - 1,
-        }
+          remainingRepetitions: listLength - 1,
+        };
       }
-
+    
       bubbleSort();
     },
     stop() {

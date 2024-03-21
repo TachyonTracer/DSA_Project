@@ -30,16 +30,14 @@
   width: 8px;
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+ 
   margin: 0;
 
   background-color: var(--page-background-color);
@@ -174,19 +172,23 @@ text-decoration-line: underline;
 .nav-bar a{
  
     list-style-type: none;
-    margin-top: 15px;
+    
     text-decoration: none;
     border-radius: 40px;
    
    
     
   }
+  
   li{
     display: inline;
     font-size: 30px;
     padding: 30px;
    
   
+}
+.nav-bar{
+  margin-top: 0px;
 }
 .nav-bar a:hover {
   background-color:rgb(15, 234, 242);
